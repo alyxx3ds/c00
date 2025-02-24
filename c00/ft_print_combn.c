@@ -1,35 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_nbr.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/23 11:41:49 by aciprian          #+#    #+#             */
+/*   Updated: 2025/02/24 10:52:42 by aciprian         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_putnbr(int nb)
 {
-	write(1, &c, 1);
+	char	digit;
+
+	if (nb == -2147483648)
+	{
+		write(1, "-2", 2);
+		nb = 147483648;
+	}
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+	}
+	digit = '0' + (nb % 10);
+	write(1, &digit, 1);
 }
 
-void	ft_print_combn(int n)
+int	main(void)
 {
-	int	num[10];
-	int	i;
-
-	if (n <= 0 || n >= 10)
-		return;
-	for (i = 0; i < n; i++)
-		num[i] = i;
-
-	while (num[0] <= (10 - n))
-	{
-		i = -1;
-		while (++i < n)
-			ft_putchar(num[i] + '0');
-		if (num[0] != (10 - n))
-			write(1, ", ", 2);
-
-		num[n - 1]++;
-		i = n - 1;
-		while (i > 0 && num[i] > 9 - (n - 1 - i))
-		{
-			num[i - 1]++;
-			num[i] = num[i - 1] + 1;
-			i--;
-		}
-	}
+	ft_putnbr(32);
+	return (0);
 }
