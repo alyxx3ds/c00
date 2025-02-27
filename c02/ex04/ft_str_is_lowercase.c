@@ -1,20 +1,29 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
+/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int ft_str_is_lowercase(char *str)
 {
-  if (*str == '\0')
-  {
-    return 1;
-  }
+    if (*str == '\0')
+    {
+        return (1);
+    }
 
-while (*str)
-  {
-    if (*str < 'a'|| *str > 'z')
-      {
-	return 0;
-
-      }
-    str++;
-  }
- return 1;
+    while (*str)
+    {
+        if (*str < 'a' || *str > 'z')
+        {
+            return (0);
+        }
+        str++;
+    }
+    return (1);
 }

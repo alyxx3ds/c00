@@ -12,18 +12,17 @@
 
 #include <unistd.h>
 
-char *ft_strcpy(char *dest, const char *src)
+char    *ft_strcpy(char *dest, const char *src)
 {
-    char *start = dest; 
-    
+    char    *start;
+
+    start = dest;
     while (*src != '\0')
-{
-    *dest = *src;
-    dest++;
-    src++;
-}
-
-dest = '\0';
-
-return start;
+    {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+    return (start);
 }

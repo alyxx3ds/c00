@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleciprian <aciprian@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
-/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*   Created: 2025/02/27 21:32:45 by aleciprian        #+#    #+#             */
+/*   Updated: 2025/02/27 21:32:45 by aleciprian       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+char *ft_strcat(char *dest, char *src)
 {
     int i;
+    int j;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
+    j = 0;
+    while (dest[i] != '\0')
     {
-        return (1);
-    }
-
-    while (str[i] != '\0')
-    {
-        if (str[i] < 'A' || str[i] > 'Z')
-        {
-            return (0);
-        }
         i++;
     }
-    return (1);
+    while (src[j] != '\0')
+    {
+        dest[i] = src[j];
+        i++;
+        j++;
+    }
+    dest[i] = '\0';
+
+    return (dest);
 }

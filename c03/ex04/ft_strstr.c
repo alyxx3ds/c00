@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleciprian <aciprian@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
-/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*   Created: 2025/02/27 21:24:45 by aleciprian        #+#    #+#             */
+/*   Updated: 2025/02/27 21:24:45 by aleciprian       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+char *ft_strstr(char *str, char *to_find)
 {
     int i;
+    int j;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
+    if (*to_find == '\0')
     {
-        return (1);
+        return (str);
     }
 
     while (str[i] != '\0')
     {
-        if (str[i] < 'A' || str[i] > 'Z')
+        j = 0;
+        while (str[i + j] != '\0' && str[i + j] == to_find[j])
         {
-            return (0);
+            j++;
+        }
+        if (to_find[j] == '\0')
+        {
+            return (&str[i]);
         }
         i++;
     }
-    return (1);
+    return (0);
 }

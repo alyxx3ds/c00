@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
-/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*   Created: 2025/02/27 18:50:39 by aleciprian        #+#    #+#             */
+/*   Updated: 2025/02/27 18:50:39 by aleciprian       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+unsigned int    ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-    int i;
+    unsigned int    i;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
+    while (src[i] != '\0')
     {
-        return (1);
-    }
-
-    while (str[i] != '\0')
-    {
-        if (str[i] < 'A' || str[i] > 'Z')
-        {
-            return (0);
-        }
         i++;
     }
-    return (1);
+
+    if (size > 0)
+    {
+        unsigned int    j;
+
+        for (j = 0; j < size - 1 && src[j] != '\0'; j++)
+        {
+            dest[j] = src[j];
+        }
+        dest[j] = '\0';
+    }
+
+    return (i);
 }

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleciprian <aciprian@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
-/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*   Created: 2025/02/27 21:32:45 by aleciprian        #+#    #+#             */
+/*   Updated: 2025/02/27 21:32:45 by aleciprian       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+int ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-    int i;
+    unsigned int i;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
+    while (i < n && s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
     {
-        return (1);
-    }
-
-    while (str[i] != '\0')
-    {
-        if (str[i] < 'A' || str[i] > 'Z')
-        {
-            return (0);
-        }
         i++;
     }
-    return (1);
+
+    if (i == n)
+    {
+        return (0);
+    }
+
+    return (s1[i] - s2[i]);
 }

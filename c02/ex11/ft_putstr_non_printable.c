@@ -1,34 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 11:39:25 by aciprian          #+#    #+#             */
-/*   Updated: 2025/02/25 12:07:51 by aciprian         ###   ########.fr       */
+/*   Created: 2025/02/27 18:50:39 by aleciprian        #+#    #+#             */
+/*   Updated: 2025/02/27 18:50:39 by aleciprian       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int ft_str_is_uppercase(char *str)
+void    ft_putchar(char c)
+{
+    write(1, &c, 1);
+}
+
+void    ft_put_hex(unsigned char c)
+{
+    char    *hex;
+
+    hex = "0123456789abcdef";
+    ft_putchar('\\');
+    ft_putchar(hex[c / 16]);
+    ft_putchar(hex[c % 16]);
+}
+
+void    ft_putstr_non_printable(char *str)
 {
     int i;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
-    {
-        return (1);
-    }
-
     while (str[i] != '\0')
     {
-        if (str[i] < 'A' || str[i] > 'Z')
+        if (str[i] >= 32 && str[i] <= 126)
         {
-            return (0);
+            ft_putchar(str[i]);
+        }
+        else
+        {
+            ft_put_hex((unsigned char)str[i]);
         }
         i++;
     }
-    return (1);
 }

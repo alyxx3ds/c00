@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aciprian <aciprian@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,25 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int ft_str_is_uppercase(char *str)
+char    *ft_strlowcase(char *str)
 {
     int i;
 
     i = 0;
-    if (str == NULL || str[0] == '\0')
-    {
-        return (1);
-    }
-
     while (str[i] != '\0')
     {
-        if (str[i] < 'A' || str[i] > 'Z')
+        if (str[i] >= 'A' && str[i] <= 'Z')
         {
-            return (0);
+            str[i] += 32;
         }
         i++;
     }
-    return (1);
+    return (str);
 }
